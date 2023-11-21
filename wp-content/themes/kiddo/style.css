@@ -682,6 +682,8 @@ a.text-dark:hover {
 
 .menu-item a {
   color: #000;
+  display: block;
+  padding-bottom: 8px;
 }
 
 .breadcrumb {
@@ -1221,4 +1223,8 @@ a.text-dark:hover {
     padding: 5px 15px;
     letter-spacing: 2px;
   }
+}
+
+.form__pay_container.close1 {
+  display: none;
 }

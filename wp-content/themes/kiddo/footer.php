@@ -1,8 +1,8 @@
 <? $lang = pll_current_language(); ?>
 
-<footer id="footer" class="position-relative bg-light py-lg-7 my-lg-7 mb-lg-0">
+<footer id="footer" class="position-relative bg-light py-lg-7 mb-lg-0">
 	<div class="cloud-overlay position-absolute overflow-x-hidden w-100">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cloud-pattern-overlay.png" alt="icon overlay" />
+
 	</div>
 	<div class="container">
 		<div class="row d-flex flex-wrap justify-content-between">
@@ -100,28 +100,32 @@
 		</div>
 		<h1 class="modal__title"><?php echo $lan === 'ru' ? 'Оформление заказа' : 'Feedback form'; ?></h1>
 		<div class="form__pay_container">
-			<form action="<?php echo get_template_directory_uri(); ?>/mail.php" class="form" method="post" onsubmit="return submitForm(this)">
+			<form action="" class="form form-buy" method="post" id="form-pay">
 
 				<input type="text" name="name" id="name" placeholder="<?php echo $lan === 'ru' ? 'Имя' : 'Name'; ?>" required />
 
 
 				<input type="email" name="email" id="email" placeholder="<?php echo $lan === 'ru' ? 'Почта' : 'Email'; ?>" required />
 
-				<input type="text" name="name" id="name" placeholder="<?php echo $lan === 'ru' ? 'Страна' : 'Country'; ?>" required />
+				<input type="text" name="country" id="country" placeholder="<?php echo $lan === 'ru' ? 'Страна' : 'Country'; ?>" required />
 
-				<input type="text" name="name" id="name" placeholder="<?php echo $lan === 'ru' ? 'Адрес' : 'Address'; ?>" required />
+				<input type="text" name="address" id="address" placeholder="<?php echo $lan === 'ru' ? 'Адрес' : 'Address'; ?>" required />
+				<input type="hidden" name="title" value="<?php the_title(); ?>">
+				<input type="hidden" name="price" value="<? the_field('new_price'); ?>">
+				<input type="hidden" name="currency" value="<?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?>">
 
 
 				<button class="form__send"><?php echo $lan === 'ru' ? 'Оплатить' : 'Pay'; ?></button>
-				<div class="response"></div>
+
 			</form>
 
 			<div class="pay__product_info">
-				<p class="pay__title"> <? the_title(); ?></p>
+				<p class="pay__title"> <?php the_title(); ?></p>
 				<?php echo $lan === 'ru' ? 'Цена' : 'Price'; ?>
-				<p class="pay__price"> <?php the_excerpt(); ?></p>
+				<p class="pay__price"> <?php the_field("new_price"); ?> <?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?></p>
 			</div>
 		</div>
+		<div id="widget" class="buy-window"></div>
 	</div>
 </div>
 
@@ -131,7 +135,7 @@
 		<div class="row">
 			<div class="col-lg-8 col-md-6 mb-3">
 				<div class="d-flex flex-wrap align-items-center">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/main-logo.png" alt="brand name" class="pe-5" />
+					<a href="/"> <img src="<?php echo get_template_directory_uri(); ?>/assets/images/main-logo.png" alt="brand name" class="pe-5" /></a>
 					<p class="m-0">©2023 Kiddo.<?php echo $lang === 'ru' ? 'Все права защищены' : 'All rights reserved'; ?> .</p>
 				</div>
 			</div>
@@ -148,11 +152,58 @@
 
 <?php wp_footer(); ?>
 
+<script>
+	const form = document.querySelector('#form-pay');
+
+	if (form) {
+
+
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const widget = document.querySelector('#widget');
+			console.log(widget);
+
+			const act = '/wp-admin/admin-ajax.php';
+			const xhr = new XMLHttpRequest();
+			const formData = new FormData(form);
+
+			formData.append("action", "send_order");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						document.querySelector(".form__pay_container").classList.toggle("close1");
+						document.querySelector(".buy-window").classList.toggle("open");
+						let response = JSON.parse(xhr.responseText);
+						if (response.error.code !== 0) {
+							return;
+						}
+						PSP.Widget.init({
+							display: {
+								mode: "embedded",
+								params: {
+									container: widget,
+									pcidss: "full",
+								},
+							},
+							payUrl: response.object.payUrl,
+						});
+						return false;
+					} else {
+						console.log('An error occurred during your request: ' + xhr.status + ' ' + xhr.statusText);
+					}
+				}
+			}
+			xhr.open("POST", act);
+			xhr.send(formData);
+		});
+	}
+</script>
+
 <script src="https://unpkg.com/imask"></script>
 
 <script>
-	const form = document.querySelector(".form");
-	const phoneInput = form.querySelector('input[name=tel]');
+	const form1 = document.querySelector(".form");
+	const phoneInput = form1.querySelector('input[name=tel]');
 
 	const mask = IMask(phoneInput, {
 		mask: '+{7}(000)000-00-00',

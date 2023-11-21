@@ -33,6 +33,7 @@ function add_scripts_and_styles()
 	wp_enqueue_script('plugins', get_template_directory_uri() . '/assets/js/plugins.js', array(), null, 'footer');
 	wp_enqueue_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', array(), null, 'footer');
 	wp_enqueue_script('swiper_js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), null, 'footer');
+	wp_enqueue_script('pay', get_template_directory_uri() . '/assets/js/pay.js', array(), null, 'footer');
 
 
 	wp_enqueue_style('swiper_css', get_template_directory_uri() . '/assets/css/cdn.jsdelivr.net_npm_swiper@10.2.0_swiper.min.css');
@@ -105,3 +106,128 @@ function filter_bcn_breadcrumb_template($template, $this_type, $this_id)
 	}
 	return $template;
 };
+
+add_action('wp_ajax_send_order', 'send_order_action');
+add_action('wp_ajax_nopriv_send_order', 'send_order_action');
+function send_order_action()
+{
+
+
+	$file = dirname(__FILE__) . '/../../../tokens.json';
+
+
+
+	$json = json_decode(file_get_contents($file), true);
+
+
+	$accessToken = $json['access_token'];
+	$refreshToken = $json['refresh_token'];
+	$accessTokenExpireAt = $json['expires_at'];
+
+
+	if (time() >= strtotime($accessTokenExpireAt)) {
+		$newTokens = refreshToken($accessToken, $refreshToken);
+
+		$accessToken = $newTokens->accessToken;
+		$json['access_token'] = $accessToken;
+
+		$refreshToken = $newTokens->refreshToken;
+		$json['refresh_token'] = $refreshToken;
+
+		$accessTokenExpireAt = $newTokens->accessTokenExpireAt;
+		$json['expires_at'] = $accessTokenExpireAt;
+
+		file_put_contents($file, json_encode($json));
+	}
+	$merchantSiteId = "amp77-006";
+	/* 	$accessToken = "aNmmxeTIZZcI4WSLeTTvw6tWL";
+	$accessTokenExpireAt = "2023-10-03 15:12:26+03";
+	$refreshToken = "rbGH9QMMzHZ30fQNVfuMyWtoo";
+	$refreshTokenExpireAt = "2023-12-02 15:12:26+03"; */
+
+	$productName = $_POST['title'];
+	$productPrice = $_POST['price'];
+	$currency = $_POST['currency'];
+	$customerName = $_POST['name'];
+	$email = $_POST['email'];
+	$country = $_POST['country'];
+	$address = $_POST['address'];
+
+	$productName = mb_substr($productName, 0, 20);
+
+
+	/* Order create */
+	$postFields = array(
+		"description" => $productName,
+		"autoConfirm" => true,
+		"expireAt" => gmdate("Y-m-d\TH:i:s\Z", strtotime('+1 hour')),
+		"callbackUrl" => "http://20.abetadev.beget.tech/wp-content/themes/web/php/server-pro-callback.php",
+		"amount" => array(
+			"value" => $productPrice,
+			"currency" => $currency
+		),
+		"customFields" => array(
+			"cf1" => $email,
+			"cf2" => $customerName,
+			"cf3" => $country,
+			"cf4" => $address,
+			"cf5" => $productName
+		),
+	);
+
+
+
+	$payload = json_encode($postFields);
+	$result = createOrder($payload, $accessToken, $refreshToken);
+
+
+	echo json_encode($result);
+
+	wp_die();
+}
+
+
+
+const API_URL = "https://api.symoco.com/v1/";
+function createOrder($payload, $accessToken, $refreshToken)
+{
+	$url = API_URL . "orders";
+
+	$result = curlPost($url, $accessToken, $payload);
+
+	return $result;
+}
+
+function refreshToken($accessToken, $refreshToken)
+{
+	$url = API_URL . "oauth/tokens/refresh";
+
+	$result = curlPost($url, $accessToken, json_encode(array("refreshToken" => $refreshToken)));
+
+	return $result;
+}
+
+function curlPost($url, $bearer, $payload)
+{
+	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+	$headers = array();
+	$headers[] = 'Content-Type: application/json';
+	$headers[] = 'Authorization: Bearer ' . $bearer;
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+	$result = curl_exec($ch);
+	if (curl_errno($ch)) {
+		// echo 'Error:' . curl_error($ch);
+	}
+	curl_close($ch);
+
+	return json_decode($result);
+}
