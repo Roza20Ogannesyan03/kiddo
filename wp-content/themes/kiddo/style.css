@@ -840,6 +840,11 @@ a.text-dark:hover {
   color: #000;
   cursor: pointer;
 }
+.buy {
+  position: absolute;
+  bottom: 0;
+  z-index: 6;
+}
 
 .modal,
 .modal-buy {

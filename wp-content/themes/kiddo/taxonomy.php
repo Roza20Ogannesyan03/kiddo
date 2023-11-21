@@ -60,12 +60,13 @@ $qo = get_queried_object();
                                 <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
                             </h3>
                             <div class="product-price text-primary"><?php the_excerpt(); ?></div>
-                            <a href="cart.html" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?>
-                                <svg class="cart" width="18" height="18">
-                                    <use xlink:href="#cart"></use>
-                                </svg>
-                            </a>
+
                         </div>
+                        <a href="cart.html" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?>
+                            <svg class="cart" width="18" height="18">
+                                <use xlink:href="#cart"></use>
+                            </svg>
+                        </a>
                     </div>
 
                 <? } ?>
