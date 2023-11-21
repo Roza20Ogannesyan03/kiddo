@@ -49,18 +49,20 @@ $qo = get_queried_object();
             ?>
 
                     <div class="product-item">
-                        <a href="<?php the_permalink(); ?>">
-                            <div class="image-holder text-center p-3 mb-4 border rounded-4">
-                                <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
+                        <div>
+                            <a href="<?php the_permalink(); ?>">
+                                <div class="image-holder text-center p-3 mb-4 border rounded-4">
+                                    <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
+                                </div>
+                            </a>
+                            <div class="product-info ps-2">
+
+                                <h3 class="m-0">
+                                    <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
+                                </h3>
+                                <div class="product-price text-primary"><?php the_excerpt(); ?></div>
+
                             </div>
-                        </a>
-                        <div class="product-info ps-2">
-
-                            <h3 class="m-0">
-                                <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
-                            </h3>
-                            <div class="product-price text-primary"><?php the_excerpt(); ?></div>
-
                         </div>
                         <a href="cart.html" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?>
                             <svg class="cart" width="18" height="18">

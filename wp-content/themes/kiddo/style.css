@@ -841,9 +841,7 @@ a.text-dark:hover {
   cursor: pointer;
 }
 .buy {
-  position: absolute;
-  bottom: 0;
-  z-index: 6;
+  width: 50%;
 }
 
 .modal,
@@ -1098,6 +1096,10 @@ a.text-dark:hover {
 
 .products_list .product-item {
   width: 274px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 575px;
 }
 .product-preview img {
   width: 70%;
@@ -1107,6 +1109,7 @@ a.text-dark:hover {
   top: 50%;
   z-index: 3;
 }
+
 .swiper-arrow.chevron-arrow-left {
   left: 4%;
 }
