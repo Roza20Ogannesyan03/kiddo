@@ -1090,7 +1090,7 @@ a.text-dark:hover {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   row-gap: 40px;
   column-gap: 30px;
