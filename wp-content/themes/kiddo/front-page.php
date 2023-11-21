@@ -143,6 +143,7 @@
 
 
                         <div class="swiper-slide">
+
                             <div class="product-item">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="image-holder text-center p-3 mb-4 border rounded-4">
