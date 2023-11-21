@@ -60,7 +60,7 @@ $qo = get_queried_object();
                                 <h3 class="m-0">
                                     <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
                                 </h3>
-                                <div class="product-price text-primary"><?php the_excerpt(); ?></div>
+                                <div class="product-price text-primary"><?php the_excerpt(); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
 
                             </div>
                         </div>

@@ -48,8 +48,8 @@ foreach ($terms  as $term) {
                         <h3 itemprop="name" class="product-title display-4"><? the_title(); ?></h3>
                     </div>
                     <div class="product-price">
-                        <strong class="text-primary fs-3"><? the_field('new_price'); ?></strong>
-                        <del><? the_field('old_price'); ?></del>
+                        <strong class="text-primary fs-3"><? the_field('new_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></strong>
+                        <del><? the_field('old_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></del>
                     </div>
                     <div class="cart-wrap">
                         <div class="color-options product-select">
@@ -180,7 +180,7 @@ foreach ($terms  as $term) {
                                     <h3 class="m-0">
                                         <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
                                     </h3>
-                                    <div class="product-price text-primary"><?php the_excerpt(); ?></div>
+                                    <div class="product-price text-primary"><?php the_excerpt(); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?><?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
                                     <a href="#" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?> <svg class="cart" width="18" height="18">
                                             <use xlink:href="#cart"></use>
                                         </svg>

@@ -1104,7 +1104,10 @@ a.text-dark:hover {
 .product-preview img {
   width: 70%;
 }
-
+.product-price {
+  display: flex;
+  gap: 5px;
+}
 .swiper-arrow {
   top: 50%;
   z-index: 3;
