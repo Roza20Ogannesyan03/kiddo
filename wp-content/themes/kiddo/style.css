@@ -1095,6 +1095,9 @@ a.text-dark:hover {
   row-gap: 40px;
   column-gap: 30px;
 }
+.image-holder {
+  height: 273px;
+}
 
 .products_list .product-item {
   width: 274px;
