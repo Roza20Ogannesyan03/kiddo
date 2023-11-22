@@ -113,7 +113,7 @@ function send_order_action()
 {
 
 
-	$file = dirname(__FILE__) . '/../../../tokens.json';
+	$file = dirname(__FILE__) . '/../../../../tokens.json';
 
 
 
