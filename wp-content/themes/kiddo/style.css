@@ -1099,7 +1099,9 @@ a.text-dark:hover {
 .products_list .image-holder {
   height: 273px;
 }
-
+.product-item_main {
+  height: 350px;
+}
 .products_list .product-item {
   width: 274px;
   display: flex;

@@ -170,7 +170,7 @@ foreach ($terms  as $term) {
 
                 ?>
                         <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                            <div class="product-item">
+                            <div class="product-item product-item_main">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="image-holder text-center p-3 mb-4 border rounded-4">
                                         <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>

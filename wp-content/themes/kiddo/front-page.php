@@ -144,7 +144,7 @@
 
                         <div class="swiper-slide">
 
-                            <div class="product-item">
+                            <div class="product-item product-item_main">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="image-holder text-center p-3 mb-4 border rounded-4">
                                         <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
@@ -230,7 +230,7 @@
                 ?>
 
                         <div class="swiper-slide">
-                            <div class="product-item">
+                            <div class="product-item product-item_main">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="image-holder text-center p-3 mb-4 border rounded-4">
                                         <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
