@@ -111,7 +111,7 @@
 
 				<input type="text" name="address" id="address" placeholder="<?php echo $lan === 'ru' ? 'Адрес' : 'Address'; ?>" required />
 				<input type="hidden" name="title" value="<?php the_title(); ?>">
-				<input type="hidden" name="price" value="<? the_field('new_price'); ?>">
+				<input id="price" type="hidden" name="price" class="input_price" value="">
 				<input type="hidden" name="currency" value="<?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?>">
 
 
@@ -122,7 +122,7 @@
 			<div class="pay__product_info">
 				<p class="pay__title"> <?php the_title(); ?></p>
 				<?php echo $lan === 'ru' ? 'Цена' : 'Price'; ?>
-				<p class="pay__price"> <?php the_field("new_price"); ?> <?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?></p>
+				<p id="modal-price" class="pay__price"> </p> <?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?>
 			</div>
 		</div>
 		<div id="widget" class="buy-window"></div>
@@ -162,6 +162,9 @@
 			e.preventDefault();
 			const widget = document.querySelector('#widget');
 			console.log(widget);
+
+			const priceInput = form.querySelector('#price');
+			priceInput.value = window.price;
 
 			const act = '/wp-admin/admin-ajax.php';
 			const xhr = new XMLHttpRequest();

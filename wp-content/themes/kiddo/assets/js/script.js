@@ -65,25 +65,41 @@
 		});
 	};
 
+	$(document).ready(function () {
+
+
+	});
 	// input spinner
 	var initQuantitySpinner = function () {
 
 		$('.product-qty').each(function () {
 
 			var $el_product = $(this);
-			var quantity = 0;
+			var quantity = 1;
+			var price = $('.price');
+			var inPrice = $('.input_price');
+			var temp = price.html();
+
+			window.price = Number(price.html());
 
 			$el_product.find('.quantity-right-plus').click(function (e) {
 				e.preventDefault();
-				var quantity = parseInt($el_product.find('#quantity').val());
-				$el_product.find('#quantity').val(quantity + 1);
+				var quantity = parseInt($el_product.find('#quantity').html());
+				$el_product.find('#quantity').html(quantity + 1);
+				//console.log(price.html());
+				const newPrice = Number(temp) * $el_product.find('#quantity').html();
+				window.price = newPrice;
+				price.html(newPrice);
 			});
 
 			$el_product.find('.quantity-left-minus').click(function (e) {
 				e.preventDefault();
-				var quantity = parseInt($el_product.find('#quantity').val());
-				if (quantity > 0) {
-					$el_product.find('#quantity').val(quantity - 1);
+				var quantity = parseInt($el_product.find('#quantity').html());
+				if (quantity > 1) {
+					$el_product.find('#quantity').html(quantity - 1);
+					const newPrice = price.html() - Number(temp);
+					window.price = newPrice;
+					price.html(newPrice);
 				}
 			});
 
@@ -132,22 +148,19 @@
 let ask = document.querySelector('.header__right_ask');
 let modal = document.querySelector('.modal');
 
-//const black = document.querySelector('.PermalinkOverlay');
-
 ask.addEventListener('click', () => {
 	modal.style.display = "block"
-	//black.classList.add('black');
 })
 
 let buy = document.querySelectorAll('.buy');
 let modalbuy = document.querySelector('.modal-buy');
 
-//const black = document.querySelector('.PermalinkOverlay');
-
 buy.forEach(elem => {
 	elem.addEventListener('click', () => {
+		const modalPrice = document.getElementById('modal-price');
+		modalPrice.innerHTML = window.price;
 		modalbuy.style.display = "block"
-		//black.classList.add('black');
+
 	})
 })
 
@@ -157,7 +170,6 @@ close.forEach(element => {
 	element.addEventListener('click', function () {
 		modal.style.display = 'none';
 		modalbuy.style.display = 'none';
-		//black.classList.remove('black');
 	});
 });
 

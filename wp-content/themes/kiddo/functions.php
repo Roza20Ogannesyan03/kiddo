@@ -113,11 +113,10 @@ function send_order_action()
 {
 
 
-	$file = dirname(__FILE__) . '/../../../../tokens.json';
-
-
+	$file = dirname(__FILE__) . '/../../../tokens.json';
 
 	$json = json_decode(file_get_contents($file), true);
+
 
 
 	$accessToken = $json['access_token'];
@@ -154,7 +153,6 @@ function send_order_action()
 	$address = $_POST['address'];
 
 	$productName = mb_substr($productName, 0, 20);
-
 
 	/* Order create */
 	$postFields = array(

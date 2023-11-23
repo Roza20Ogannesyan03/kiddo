@@ -1223,6 +1223,9 @@ a.text-dark:hover {
 .product-quantity .input-group .input-number {
   height: 55px;
 }
+#quantity {
+  padding-top: 14px;
+}
 
 @media (max-width: 425px) {
   .btn.btn-md {

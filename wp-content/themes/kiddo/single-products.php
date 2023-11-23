@@ -48,7 +48,9 @@ foreach ($terms  as $term) {
                         <h3 itemprop="name" class="product-title display-4"><? the_title(); ?></h3>
                     </div>
                     <div class="product-price">
-                        <strong class="text-primary fs-3"><? the_field('new_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></strong>
+                        <strong class="text-primary fs-3">
+                            <p class="price"> <? the_field('new_price'); ?></p> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
+                        </strong>
                         <del><? the_field('old_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></del>
                     </div>
                     <div class="cart-wrap">
@@ -76,7 +78,7 @@ foreach ($terms  as $term) {
                                     <span class="input-group-btn">
                                         <button type="button" class="quantity-left-minus btn btn-light btn-number border" data-type="minus" data-field=""> - </button>
                                     </span>
-                                    <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+                                    <div id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">1</div>
                                     <span class="input-group-btn">
                                         <button type="button" class="quantity-right-plus btn btn-light btn-number border" data-type="plus" data-field=""> + </button>
                                     </span>
