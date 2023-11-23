@@ -122,7 +122,7 @@
 			<div class="pay__product_info">
 				<p class="pay__title"> <?php the_title(); ?></p>
 				<?php echo $lan === 'ru' ? 'Цена' : 'Price'; ?>
-				<p id="modal-price" class="pay__price"> </p> <?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?>
+				<span id="modal-price" class="pay__price"> </span> <?php echo $lan === 'ru' ? 'KZT' : 'USD'; ?>
 			</div>
 		</div>
 		<div id="widget" class="buy-window"></div>

@@ -49,7 +49,7 @@ foreach ($terms  as $term) {
                     </div>
                     <div class="product-price">
                         <strong class="text-primary fs-3">
-                            <p class="price"> <? the_field('new_price'); ?></p> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
+                            <span class="price"> <? the_field('new_price'); ?></span> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
                         </strong>
                         <del><? the_field('old_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></del>
                     </div>
@@ -182,7 +182,7 @@ foreach ($terms  as $term) {
                                     <h3 class="m-0">
                                         <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
                                     </h3>
-                                    <div class="product-price text-primary"><?php the_field("price"); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?><?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
+                                    <div class="product-price text-primary"><?php the_field("new_price"); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
                                     <a href="#" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?> <svg class="cart" width="18" height="18">
                                             <use xlink:href="#cart"></use>
                                         </svg>
