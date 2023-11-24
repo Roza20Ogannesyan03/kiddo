@@ -69,6 +69,8 @@
 
 
 	});
+	var price = $('.price');
+	window.price = price;
 	// input spinner
 	var initQuantitySpinner = function () {
 
@@ -76,7 +78,7 @@
 
 			var $el_product = $(this);
 			var quantity = 1;
-			var price = $('.price');
+
 			var inPrice = $('.input_price');
 			var temp = price.html();
 
