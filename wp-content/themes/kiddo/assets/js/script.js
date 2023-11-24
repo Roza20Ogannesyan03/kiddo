@@ -159,6 +159,7 @@ buy.forEach(elem => {
 	elem.addEventListener('click', () => {
 		const modalPrice = document.getElementById('modal-price');
 		modalPrice.innerHTML = window.price;
+		console.log(window.price);
 		modalbuy.style.display = "block"
 
 	})
