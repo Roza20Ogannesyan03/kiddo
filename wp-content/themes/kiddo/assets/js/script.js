@@ -155,19 +155,6 @@ ask.addEventListener('click', () => {
 	modal.style.display = "block"
 })
 
-let buy = document.querySelectorAll('.buy');
-let modalbuy = document.querySelector('.modal-buy');
-
-buy.forEach(elem => {
-	elem.addEventListener('click', () => {
-		const modalPrice = document.getElementById('modal-price');
-		modalPrice.innerHTML = window.price;
-		console.log(window.price.html());
-		modalbuy.style.display = "block"
-
-	})
-})
-
 
 const close = document.querySelectorAll(".close__img");
 close.forEach(element => {

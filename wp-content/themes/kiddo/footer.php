@@ -154,6 +154,21 @@
 <?php wp_footer(); ?>
 
 <script>
+	let buy = document.querySelectorAll('.buy');
+	let modalbuy = document.querySelector('.modal-buy');
+
+	buy.forEach(elem => {
+		elem.addEventListener('click', () => {
+			const modalPrice = document.getElementById('modal-price');
+			modalPrice.innerHTML = window.price;
+			console.log(window.price);
+			modalbuy.style.display = "block"
+
+		})
+	})
+
+
+
 	const form = document.querySelector('#form-pay');
 
 	if (form) {
