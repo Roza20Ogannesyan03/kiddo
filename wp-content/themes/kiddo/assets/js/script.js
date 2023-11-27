@@ -94,6 +94,7 @@
 				console.log($el_product.find('#quantity').html());
 				console.log(temp.html());
 				const newPrice = temp.html() * $el_product.find('#quantity').html();
+				console.log(temp.html());
 				window.price = newPrice;
 				price.html(newPrice);
 			});
