@@ -49,7 +49,7 @@ foreach ($terms  as $term) {
                     </div>
                     <div class="product-price">
                         <strong class="text-primary fs-3">
-                            <span class="price"><?= number_format((float)preg_replace('/\s+/', '', (string)get_field('new_price')), 2, ',', ' '); ?></span> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
+                            <span class="price"><?= number_format((float)str_replace(',', '.', preg_replace('/\s+/', '', (string)get_field('new_price'))), 2, ',', ' '); ?></span> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
                         </strong>
 
                     </div>
