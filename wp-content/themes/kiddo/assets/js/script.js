@@ -72,7 +72,7 @@
 	var price = $('.price');
 	window.price = price.html();
 	var temp = $('.price').html();
-	console.log(price.html());
+	console.log(temp);
 	// input spinner
 	var initQuantitySpinner = function () {
 
