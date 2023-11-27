@@ -93,7 +93,7 @@
 				$el_product.find('#quantity').html(quantity + 1);
 				console.log($el_product.find('#quantity').html());
 				console.log(temp.html());
-				const newPrice = temp.html() * $el_product.find('#quantity').html();
+				const newPrice = Number(temp.html()) * Number($el_product.find('#quantity').html());
 				console.log(newPrice);
 				window.price = newPrice;
 				price.html(newPrice);
