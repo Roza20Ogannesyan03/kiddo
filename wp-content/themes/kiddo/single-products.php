@@ -49,9 +49,9 @@ foreach ($terms  as $term) {
                     </div>
                     <div class="product-price">
                         <strong class="text-primary fs-3">
-                            <span class="price"><?= number_format((float)get_field('new_price'), 2, ',', ' '); ?></span> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
+                            <span class="price"><?= number_format((float)preg_replace('/\s+/', '', (string)get_field('new_price')), 2, ',', ' '); ?></span> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?>
                         </strong>
-                        <del><? the_field('old_price'); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></del>
+
                     </div>
                     <div class="cart-wrap">
                         <div class="color-options product-select">
