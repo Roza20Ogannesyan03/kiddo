@@ -71,6 +71,13 @@
 	});
 	var price = $('.price');
 	window.price = price.html();
+
+	function toNumber(number) {
+		return Number(String(number).replace('&nbsp;', '').replace(',', '.').replace(/\s/g, ''));
+	}
+
+	window.toNumber = toNumber;
+
 	// input spinner
 	var initQuantitySpinner = function () {
 
@@ -81,7 +88,7 @@
 
 			//var inPrice = $('.input_price');
 			//inPrice.html() = window.price;
-			var temp = price.html().replace(',', '.').replace(/\s/g, '');
+			var temp = toNumber(price.html());
 
 			//window.price = Number(price.html());
 
@@ -89,21 +96,28 @@
 				e.preventDefault();
 				var quantity = parseInt($el_product.find('#quantity').html());
 				$el_product.find('#quantity').html(quantity + 1);
-				console.log($el_product.find('#quantity').html());
-				console.log(Number(temp));
+				// console.log($el_product.find('#quantity').html());
+				// console.log(Number(temp));
 				const newPrice = Number(temp) * $el_product.find('#quantity').html();
+
 				window.price = newPrice;
-				price.html(newPrice);
+
+				price.html(Number(newPrice).toLocaleString("ru-RU", {
+					minimumFractionDigits: 2,
+				}));
 			});
 
 			$el_product.find('.quantity-left-minus').click(function (e) {
 				e.preventDefault();
 				var quantity = parseInt($el_product.find('#quantity').html());
+
 				if (quantity > 1) {
 					$el_product.find('#quantity').html(quantity - 1);
-					const newPrice = price.html() - Number(temp);
+					const newPrice = toNumber(price.html()) - toNumber(temp);
 					window.price = newPrice;
-					price.html(newPrice);
+					price.html(Number(newPrice).toLocaleString("ru-RU", {
+						minimumFractionDigits: 2,
+					}));
 				}
 			});
 
