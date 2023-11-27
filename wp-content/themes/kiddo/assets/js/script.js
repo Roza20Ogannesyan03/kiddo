@@ -71,6 +71,7 @@
 	});
 	var price = $('.price');
 	window.price = price.html();
+	var temp = price.html();
 	// input spinner
 	var initQuantitySpinner = function () {
 
@@ -81,9 +82,9 @@
 
 			//var inPrice = $('.input_price');
 			//inPrice.html() = window.price;
-			var temp = price.html();
 
-			window.price = Number(price.html());
+
+			//window.price = Number(price.html());
 
 			$el_product.find('.quantity-right-plus').click(function (e) {
 				e.preventDefault();
