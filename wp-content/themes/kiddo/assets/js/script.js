@@ -70,7 +70,7 @@
 
 	});
 	var price = $('.price');
-	window.price = price;
+	window.price = price.html();
 	// input spinner
 	var initQuantitySpinner = function () {
 
