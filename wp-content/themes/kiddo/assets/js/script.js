@@ -71,8 +71,8 @@
 	});
 	var price = $('.price');
 	window.price = price.html();
-	var temp = $('.price').html();
-	console.log(temp);
+	var temp = $('.price');
+	console.log(temp.html());
 	// input spinner
 	var initQuantitySpinner = function () {
 
