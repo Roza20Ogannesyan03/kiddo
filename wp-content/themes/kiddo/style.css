@@ -910,6 +910,10 @@ a.text-dark:hover {
   top: 40px;
 }
 
+#new-arrival .swiper-arrow {
+  background-color: #fff;
+}
+
 .form input,
 .form textarea {
   margin-bottom: 10px;
