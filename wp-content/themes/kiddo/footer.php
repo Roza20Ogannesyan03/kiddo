@@ -76,7 +76,7 @@
 						<ul class="list-unstyled">
 							<li class="fw-medium pb-2"><?php the_field('phone', 'option'); ?></li>
 							<li class="fw-medium pb-2">
-								<a href="mailto:yourinfo@gmail.com"><?php the_field('phone', 'option'); ?></a>
+								<a href="mailto:yourinfo@gmail.com"><?php the_field('email', 'option'); ?></a>
 							</li>
 							<li class="fw-medium pb-2">
 								<?php echo $lang === 'ru' ? 'Сонома, Монтерей, Сан-Луис-Обиспо, Санта-Барбара' : 'Sonoma, Monterey, San Luis Opispo, Santa Barbara'; ?>

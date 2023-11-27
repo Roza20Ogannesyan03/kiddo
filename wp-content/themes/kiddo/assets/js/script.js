@@ -80,6 +80,7 @@
 			var quantity = 1;
 
 			var inPrice = $('.input_price');
+			//inPrice.html() = window.price;
 			var temp = price.html();
 
 			window.price = Number(price.html());
@@ -88,7 +89,7 @@
 				e.preventDefault();
 				var quantity = parseInt($el_product.find('#quantity').html());
 				$el_product.find('#quantity').html(quantity + 1);
-				console.log(price.n);
+				console.log(price.html);
 				const newPrice = Number(temp) * $el_product.find('#quantity').html();
 				window.price = newPrice;
 				price.html(newPrice);
@@ -161,7 +162,7 @@ buy.forEach(elem => {
 	elem.addEventListener('click', () => {
 		const modalPrice = document.getElementById('modal-price');
 		modalPrice.innerHTML = window.price;
-		console.log(window.price);
+		console.log(window.price.html());
 		modalbuy.style.display = "block"
 
 	})
