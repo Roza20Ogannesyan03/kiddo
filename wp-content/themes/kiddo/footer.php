@@ -156,7 +156,7 @@
 <script>
 	let buy = document.querySelectorAll('.buy');
 	let modalbuy = document.querySelector('.modal-buy');
-
+	console.log(window.price)
 	buy.forEach(elem => {
 		elem.addEventListener('click', () => {
 			const modalPrice = document.getElementById('modal-price');
