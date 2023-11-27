@@ -94,9 +94,10 @@
 				console.log($el_product.find('#quantity').html());
 				console.log(temp.html());
 				const newPrice = temp.html() * $el_product.find('#quantity').html();
-				console.log(temp.html());
+				console.log(newPrice);
 				window.price = newPrice;
 				price.html(newPrice);
+				console.log(price.html());
 			});
 
 			$el_product.find('.quantity-left-minus').click(function (e) {
