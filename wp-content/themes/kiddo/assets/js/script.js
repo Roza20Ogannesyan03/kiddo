@@ -88,7 +88,7 @@
 				e.preventDefault();
 				var quantity = parseInt($el_product.find('#quantity').html());
 				$el_product.find('#quantity').html(quantity + 1);
-				console.log(price.html());
+				console.log(price.n);
 				const newPrice = Number(temp) * $el_product.find('#quantity').html();
 				window.price = newPrice;
 				price.html(newPrice);

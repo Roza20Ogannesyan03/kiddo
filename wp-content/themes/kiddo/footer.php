@@ -71,11 +71,12 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="footer-menu">
 					<h5 class="widget-title text-secondary"><?php echo $lang === 'ru' ? 'Контакты' : 'Contact'; ?></h5>
+					<h5 class="widget-title text-secondary"><?php echo $lang === 'ru' ? 'Название компании' : 'Company name'; ?></h5>
 					<div class="social-links">
 						<ul class="list-unstyled">
-							<li class="fw-medium pb-2">000 111 222 333 444</li>
+							<li class="fw-medium pb-2"><?php the_field('phone', 'option'); ?></li>
 							<li class="fw-medium pb-2">
-								<a href="mailto:yourinfo@gmail.com">Yourinfo@gmail.com</a>
+								<a href="mailto:yourinfo@gmail.com"><?php the_field('phone', 'option'); ?></a>
 							</li>
 							<li class="fw-medium pb-2">
 								<?php echo $lang === 'ru' ? 'Сонома, Монтерей, Сан-Луис-Обиспо, Санта-Барбара' : 'Sonoma, Monterey, San Luis Opispo, Santa Barbara'; ?>
