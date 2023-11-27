@@ -54,24 +54,24 @@ foreach ($terms  as $term) {
 
                     </div>
                     <div class="cart-wrap">
-                        <div class="color-options product-select">
-                            <div class="color-toggle d-flex align-items-baseline" data-option-index="0">
-                                <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Цвет' : 'Color'; ?>:</h4>
+                        <?php if (get_field('color')) { ?><div class="color-options product-select">
+                                <div class="color-toggle d-flex align-items-baseline" data-option-index="0">
+                                    <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Цвет' : 'Color'; ?>:</h4>
+                                    <ul class="select-list list-unstyled d-flex">
+                                        <li class="select-item pe-2" data-val="Green" title="Green">
+                                            <? the_field('color'); ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><? } ?>
+                        <?php if (get_field('age')) { ?><div class="swatch product-select d-flex align-items-baseline" data-option-index="1">
+                                <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Возраст' : 'Age'; ?>:</h4>
                                 <ul class="select-list list-unstyled d-flex">
-                                    <li class="select-item pe-2" data-val="Green" title="Green">
-                                        <? the_field('color'); ?>
+                                    <li data-value="S" class="select-item pe-2">
+                                        <? the_field('age'); ?>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="swatch product-select d-flex align-items-baseline" data-option-index="1">
-                            <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Возраст' : 'Age'; ?>:</h4>
-                            <ul class="select-list list-unstyled d-flex">
-                                <li data-value="S" class="select-item pe-2">
-                                    <? the_field('age'); ?>
-                                </li>
-                            </ul>
-                        </div>
+                            </div><? } ?>
                         <div class="product-quantity">
                             <div class="stock-button-wrap d-flex flex-wrap">
                                 <div class="input-group product-qty me-3 align-items-center" style="max-width: 150px;">
@@ -89,22 +89,22 @@ foreach ($terms  as $term) {
                     </div>
                     <div class="meta-product mt-3">
 
-                        <div class="meta-item d-flex align-items-baseline">
-                            <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Категория' : 'Category'; ?>:</h4>
-                            <ul class="select-list list-unstyled d-flex">
-                                <li data-value="S" class="select-item pe-2">
-                                    <? the_field('category'); ?>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="meta-item d-flex align-items-baseline">
-                            <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Материал' : 'Material'; ?>:</h4>
-                            <ul class="select-list list-unstyled d-flex">
-                                <li data-value="S" class="select-item pe-2">
-                                    <? the_field('material'); ?>
-                                </li>
-                            </ul>
-                        </div>
+                        <?php if (get_field('category')) { ?><div class="meta-item d-flex align-items-baseline">
+                                <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Категория' : 'Category'; ?>:</h4>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="S" class="select-item pe-2">
+                                        <? the_field('category'); ?>
+                                    </li>
+                                </ul>
+                            </div><? } ?>
+                        <?php if (get_field('material')) { ?><div class="meta-item d-flex align-items-baseline">
+                                <h4 class="fs-4 text-dark pe-2"><?php echo $lang === 'ru' ? 'Материал' : 'Material'; ?>:</h4>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="S" class="select-item pe-2">
+                                        <? the_field('material'); ?>
+                                    </li>
+                                </ul>
+                            </div><? } ?>
                     </div>
                 </div>
             </div>
