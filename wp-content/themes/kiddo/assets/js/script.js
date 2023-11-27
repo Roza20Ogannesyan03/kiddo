@@ -71,19 +71,17 @@
 	});
 	var price = $('.price');
 	window.price = price.html();
-	var temp = $('.price');
-	console.log(temp.html());
 	// input spinner
 	var initQuantitySpinner = function () {
 
 		$('.product-qty').each(function () {
 
 			var $el_product = $(this);
-			//var quantity = 1;
+			var quantity = 1;
 
 			//var inPrice = $('.input_price');
 			//inPrice.html() = window.price;
-
+			var temp = price.html();
 
 			//window.price = Number(price.html());
 
@@ -92,12 +90,10 @@
 				var quantity = parseInt($el_product.find('#quantity').html());
 				$el_product.find('#quantity').html(quantity + 1);
 				console.log($el_product.find('#quantity').html());
-				console.log(temp.html());
-				const newPrice = Number(temp.html()) * Number($el_product.find('#quantity').html());
-				console.log(newPrice);
+				console.log(Number(temp));
+				const newPrice = Number(temp) * $el_product.find('#quantity').html();
 				window.price = newPrice;
 				price.html(newPrice);
-				console.log(price.html());
 			});
 
 			$el_product.find('.quantity-left-minus').click(function (e) {
