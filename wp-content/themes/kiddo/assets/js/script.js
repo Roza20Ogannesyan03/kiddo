@@ -92,7 +92,7 @@
 				var quantity = parseInt($el_product.find('#quantity').html());
 				$el_product.find('#quantity').html(quantity + 1);
 				console.log($el_product.find('#quantity').html());
-				console.log(Number(temp));
+				console.log(temp);
 				const newPrice = Number(temp) * $el_product.find('#quantity').html();
 				window.price = newPrice;
 				price.html(newPrice);
