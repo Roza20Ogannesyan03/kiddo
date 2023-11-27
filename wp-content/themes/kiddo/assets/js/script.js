@@ -81,7 +81,7 @@
 
 			//var inPrice = $('.input_price');
 			//inPrice.html() = window.price;
-			var temp = price.html();
+			var temp = price.html().replace(',', '.').replace(/\s/g, '');
 
 			//window.price = Number(price.html());
 
