@@ -183,7 +183,7 @@ foreach ($terms  as $term) {
                                         <h3 class="m-0">
                                             <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
                                         </h3>
-                                        <div class="product-price text-primary"><?php the_field("new_price"); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
+                                        <div class="product-price text-primary"><?= number_format((float)get_field('new_price'), 2, ',', ' '); ?><?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
 
                                     </div>
                                 </div>
