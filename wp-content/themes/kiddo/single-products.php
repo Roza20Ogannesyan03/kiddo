@@ -173,21 +173,24 @@ foreach ($terms  as $term) {
                 ?>
                         <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                             <div class="product-item product-item_main">
-                                <a href="<?php the_permalink(); ?>">
-                                    <div class="image-holder text-center p-3 mb-4 border rounded-4">
-                                        <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
-                                    </div>
-                                </a>
-                                <div class="product-info ps-2">
-                                    <h3 class="m-0">
-                                        <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
-                                    </h3>
-                                    <div class="product-price text-primary"><?php the_field("new_price"); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
-                                    <a href="#" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?> <svg class="cart" width="18" height="18">
-                                            <use xlink:href="#cart"></use>
-                                        </svg>
+                                <div>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <div class="image-holder text-center p-3 mb-4 border rounded-4">
+                                            <?php the_post_thumbnail("large", array("alt" => get_the_title(), "class" => "img-fluid")); ?>
+                                        </div>
                                     </a>
+                                    <div class="product-info ps-2">
+                                        <h3 class="m-0">
+                                            <a href="<?php the_permalink(); ?>" class="text-secondary"><?php the_title(); ?></a>
+                                        </h3>
+                                        <div class="product-price text-primary"><?php the_field("new_price"); ?> <?php echo $lang === 'ru' ? 'KZT' : 'USD'; ?></div>
+
+                                    </div>
                                 </div>
+                                <a href="#" class="btn btn-outline-gray text-capitalize rounded-pill mt-4 btn-sm buy" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"><?php echo $lang === 'ru' ? 'Купить' : 'Buy'; ?> <svg class="cart" width="18" height="18">
+                                        <use xlink:href="#cart"></use>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 
