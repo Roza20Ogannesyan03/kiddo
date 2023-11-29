@@ -70,7 +70,8 @@
 
 	});
 	var price = $('.price');
-	window.price = price.html();
+
+	window.price = toNumber(price.html());
 
 	function toNumber(number) {
 		return Number(String(number).replace('&nbsp;', '').replace(',', '.').replace(/\s/g, ''));
@@ -171,17 +172,16 @@ ask.addEventListener('click', () => {
 })
 
 
-let buy = document.querySelectorAll('.buy');
+let buy = document.querySelector('.buy');
 let modalbuy = document.querySelector('.modal-buy');
 
-buy.forEach(elem => {
-	elem.addEventListener('click', () => {
-		const modalPrice = document.getElementById('modal-price');
-		modalPrice.innerHTML = window.price;
-		console.log(window.price);
-		modalbuy.style.display = "block"
 
-	})
+buy.addEventListener('click', () => {
+	const modalPrice = document.getElementById('modal-price');
+	modalPrice.innerHTML = window.price;
+	console.log(window.price);
+	modalbuy.style.display = "block"
+
 })
 
 const close = document.querySelectorAll(".close__img");
