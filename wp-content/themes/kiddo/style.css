@@ -1106,11 +1106,15 @@ a.text-dark:hover {
 .product-item_main .image-holder {
   height: 350px;
 }
-.products_list .product-item {
-  width: 274px;
+.product-item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 570px;
+}
+
+.products_list .product-item {
+  width: 274px;
   height: 490px;
 }
 .product-preview img {
